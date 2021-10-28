@@ -19,5 +19,5 @@ A deployed version of base mode can be found here: https://react-rock-pickers.ne
 ## Stretch
 
 - Keep the counts above 0 (don't allow a decrease below 0)
-- The brothers can stop after they pick 50 rocks. Put the word "Done" next to the number picked if they have picked 50 or more rocks (will need conditional rendering)
+- The brothers can stop after they pick 50 rocks. Put the word "Done" next to the number picked if they have picked 50 or more rocks (will need conditional rendering) 
 - Keep a total count of all rocks picked (Will need to use props with functions. This is a BIG stretch.)

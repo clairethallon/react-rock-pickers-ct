@@ -2,25 +2,52 @@ import React, { useState } from 'react';
 
 function RockCounter() {
 
-
-  const [count, setCount] = useState(0);
+  const [isZero, setIsZero] = useState(true);
+  const [done, setDone] = useState(false);
+  let [count, setCount] = useState(0);
 
   const increase = () => {
-    setCount(count + 1);
+    setCount(++count);
+    if (count >= 50) {
+      setDone(true);
+    }
+    checkZero();
   }
+
   const decrease = () => {
-    setCount(count - 1);
+    if (count > 0) {
+      setCount(--count);
+    }
+    if (count < 50) {
+      setDone(false);
+    }
+    checkZero();
+  }
+
+  const checkZero = () => {
+    if (count === 0) {
+      setIsZero(true);
+    } else {
+      setIsZero(false);
+    }
   }
 
   const reset = () => {
-    setCount(0);
+    setDone(false);
+    setCount(count = 0);
+    //setCount(0); why doesn't this work, but line above does? 
+    //console.log('count:', count);
+    checkZero();
   }
+
+
+
   return (
     <div>
-      <div>Rocks Picked: {count}</div>
+      <div>Rocks Picked: {count} {done ? <p>DONE</p> : <span></span>}</div>
       <div>
         <button onClick={increase}>Increase</button>
-        <button onClick={decrease}>Decrease</button>
+        {isZero ? <span></span> : <button onClick={decrease}>Decrease</button>}
         <button onClick={reset}>Reset</button>
       </div>
     </div>
