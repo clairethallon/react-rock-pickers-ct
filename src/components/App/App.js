@@ -3,19 +3,42 @@ import './App.css';
 import RockCounter from '../RockCounter/RockCounter';
 
 function App() {
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
-  const [count3, setCount3] = useState(0);
-  const [count4, setCount4] = useState(0);
+  let [totalCount, setTotalCount] = useState(0);
+  let [pickaxes, setPickaxes] = useState([]);
+
+  let staticPickaxes = ['\u26CF', '\u26CF', '\u26CF'];
+
+  const updateTotalCount = (increment) => {
+    setTotalCount(totalCount += increment);
+    displayRocks();
+  }
+
+      //   // in map:
+      // numArray.map( (num)=>{ //num could be taco
+      //   if( num % 2 ===0 ){
+      //       newArray = [...newArray, num];
+      //   }  
+      // })
+      // console.log( newArray );
 
 
+  const displayRocks = () => {
+    pickaxes = [];
+    //totalCount.map( ()=> { //todo - would like to get this working with map instead
+    for(let i=0; i<totalCount; i++){
+      pickaxes = [...pickaxes, '\u26CF'];//<-pickaxe emoji
+    }
+    //});
+    setPickaxes(pickaxes)
+  }
 
   return (
     <div>
       <header>
         <h1>React Rock Pickers</h1>
 
-        <p>Total Count: {count1 + count2 + count3 + count4}</p>
+        <h2>Total Count: {totalCount}</h2>
+        <p>{pickaxes}</p>
 
         <p>
           "You ain't ever worked a day until you worked a day picking rocks." -
@@ -23,18 +46,18 @@ function App() {
         </p>
       </header>
 
-      <h2>Luke</h2>
+      <h3>Luke</h3>
 
-      <RockCounter changeCountTACO={count1 => setCount1(count1)} />
+      <RockCounter changeCountTACO={updateTotalCount} />
 
-      <h2>JJ</h2>
-      <RockCounter changeCountTACO={count2 => setCount2(count2)} />
+      <h3>JJ</h3>
+      <RockCounter changeCountTACO={updateTotalCount} />
 
-      <h2>Sam</h2>
-      <RockCounter changeCountTACO={count3 => setCount3(count3)} />
+      <h3>Sam</h3>
+      <RockCounter changeCountTACO={updateTotalCount} />
 
-      <h2>Pete</h2>
-      <RockCounter changeCountTACO={count4 => setCount4(count4)} />
+      <h3>Pete</h3>
+      <RockCounter changeCountTACO={updateTotalCount} />
     </div>
   );
 }

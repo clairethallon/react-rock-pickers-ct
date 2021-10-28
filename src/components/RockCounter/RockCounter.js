@@ -8,22 +8,22 @@ function RockCounter(props) {
 
   const increase = () => {
     setCount(++count);
+    props.changeCountTACO(1);
     if (count >= 50) {
       setDone(true);
     }
     checkZero();
-    props.changeCountTACO(count);
   }
 
   const decrease = () => {
     if (count > 0) {
       setCount(--count);
+      props.changeCountTACO(-1);
     }
     if (count < 50) {
       setDone(false);
     }
     checkZero();
-    props.changeCountTACO(count);
   }
 
   const checkZero = () => {
@@ -35,12 +35,12 @@ function RockCounter(props) {
   }
 
   const reset = () => {
+    props.changeCountTACO(-count);
     setDone(false);
     setCount(count = 0);
     //setCount(0); why doesn't this work, but line above does? 
     //console.log('count:', count);
     checkZero();
-    props.changeCountTACO(count);
   }
 
 
