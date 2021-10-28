@@ -14,10 +14,13 @@ function App() {
       </header>
       <h2>Luke</h2>
       <RockCounter />
+
       <h2>JJ</h2>
       <RockCounter />
+
       <h2>Sam</h2>
       <RockCounter />
+
       <h2>Pete</h2>
       <RockCounter />
     </div>
