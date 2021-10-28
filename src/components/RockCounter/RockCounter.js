@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-function RockCounter() {
+function RockCounter(props) {
 
   const [isZero, setIsZero] = useState(true);
   const [done, setDone] = useState(false);
-  let [count, setCount] = useState(0);
+  let [count, setCount] = useState(0); //confused about let vs const here - only let works with setCount(count++)
 
   const increase = () => {
     setCount(++count);
@@ -12,6 +12,7 @@ function RockCounter() {
       setDone(true);
     }
     checkZero();
+    props.changeCountTACO(count);
   }
 
   const decrease = () => {
@@ -22,6 +23,7 @@ function RockCounter() {
       setDone(false);
     }
     checkZero();
+    props.changeCountTACO(count);
   }
 
   const checkZero = () => {
@@ -38,6 +40,7 @@ function RockCounter() {
     //setCount(0); why doesn't this work, but line above does? 
     //console.log('count:', count);
     checkZero();
+    props.changeCountTACO(count);
   }
 
 
@@ -49,6 +52,7 @@ function RockCounter() {
         <button onClick={increase}>Increase</button>
         {isZero ? <span></span> : <button onClick={decrease}>Decrease</button>}
         <button onClick={reset}>Reset</button>
+
       </div>
     </div>
   );
